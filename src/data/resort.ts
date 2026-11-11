@@ -71,8 +71,8 @@ export const contact = {
   hours: "Diariamente, das 8h às 22h",
   address: "Estrada de Menongue – Caiundo, Km 11, Missombo, Menongue",
   region: "Cuando Cubango, Angola",
-  gps: { lat: -15.723139, lng: 17.459306, label: "-15,723139 / 17,459306" },
-  plusCode: "6MGR+5V3",
+  gps: { lat: -14.7708708, lng: 17.6886392, label: "-14,770871 / 17,688639" },
+  plusCode: "5FQV6MHQ+MF",
   airportTransferNotice: "Transfer do aeroporto: avise com 72 h de antecedência",
 } as const;
 
