@@ -2,6 +2,7 @@ import { Clock, Mail, MapPin, MessageCircle, Navigation, Phone, Plane } from "lu
 import { Button } from "@/components/ui/button";
 import { contact, mapDirectionsUrl, mapEmbedUrl, navLinks, resort } from "@/data/resort";
 import { Logo } from "./Logo";
+import { SocialLinks } from "./SocialLinks";
 
 export function Contact() {
   const rows = [
@@ -68,6 +69,7 @@ export function Contact() {
           <div>
             <Logo light />
             <p className="mt-2 max-w-sm text-xs text-bark-foreground/60">{resort.summary}</p>
+            <SocialLinks className="mt-4" />
           </div>
           <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Rodapé">
             {navLinks.map((l) => (

@@ -3,6 +3,7 @@ import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { contact, navLinks } from "@/data/resort";
+import { SocialLinks } from "./SocialLinks";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 
@@ -87,6 +88,7 @@ export function SiteHeader() {
                   </a>
                 </Button>
               </div>
+              <SocialLinks className="mt-8 px-5" />
             </SheetContent>
           </Sheet>
         </div>

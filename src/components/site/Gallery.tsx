@@ -24,7 +24,7 @@ export function Gallery() {
               className={cn(
                 "group overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 i === 0 && "col-span-2 row-span-2",
-                i === 3 && "md:col-span-2",
+                i === 3 && "col-span-2",
               )}
               aria-label={`Ampliar: ${p.alt}`}
             >
