@@ -22,6 +22,19 @@ import passadicoRestaurante from "@/assets/resort/passadico-restaurante.jpg.asse
 import bangalosEntardecer from "@/assets/resort/bangalos-entardecer.jpg.asset.json";
 import piscinaDeck from "@/assets/resort/piscina-deck.jpg.asset.json";
 import suiteAmpla from "@/assets/resort/suite-ampla.jpg.asset.json";
+import aereaBangalosRio from "@/assets/resort/aerea-bangalos-rio.jpg.asset.json";
+import bangalosPorDoSol from "@/assets/resort/bangalos-por-do-sol.jpg.asset.json";
+import piscinaPorDoSol from "@/assets/resort/piscina-por-do-sol.jpg.asset.json";
+import rapidosCuebe from "@/assets/resort/rapidos-cuebe.jpg.asset.json";
+import lounge from "@/assets/resort/lounge.jpg.asset.json";
+import rececao from "@/assets/resort/rececao.jpg.asset.json";
+import quartoDuplo from "@/assets/resort/quarto-duplo.jpg.asset.json";
+import salaSuite from "@/assets/resort/sala-suite.jpg.asset.json";
+import restauranteNoite from "@/assets/resort/restaurante-noite.jpg.asset.json";
+import esplanadaNoite from "@/assets/resort/esplanada-noite.jpg.asset.json";
+import passadicoAcacias from "@/assets/resort/passadico-acacias.jpg.asset.json";
+import bangaloNoite from "@/assets/resort/bangalo-noite.jpg.asset.json";
+import bangalosMargem from "@/assets/resort/bangalos-margem.jpg.asset.json";
 
 export type Photo = { src: string; alt: string };
 
@@ -62,6 +75,11 @@ export const contact = {
   plusCode: "6MGR+5V3",
   airportTransferNotice: "Transfer do aeroporto: avise com 72 h de antecedência",
 } as const;
+
+/** Redes sociais. Add the Instagram URL here when available; empty entries are hidden. */
+export const social: { id: "facebook" | "instagram"; label: string; url: string }[] = [
+  { id: "facebook", label: "Facebook", url: "https://www.facebook.com/Riocuebelodge" },
+];
 
 export const mapEmbedUrl = `https://www.google.com/maps?q=${contact.gps.lat},${contact.gps.lng}&z=14&output=embed`;
 export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${contact.gps.lat},${contact.gps.lng}`;
@@ -218,6 +236,12 @@ export const leisure = [
     description: "Mesas e bancos feitos à mão com cocos e texturas naturais.",
     photo: photo(mobiliarioCocos, "Mesas e bancos artesanais feitos de cocos"),
   },
+  {
+    id: "lounge",
+    name: "Lounge",
+    description: "Sofás de pele e poltronas com padrão de zebra, sob o teto de palha trançada.",
+    photo: photo(lounge, "Lounge com poltronas de padrão zebra, pufes de pele e tapete vermelho"),
+  },
 ];
 
 export const extraFacilities = [
@@ -225,16 +249,29 @@ export const extraFacilities = [
   "Piscina e parque infantil",
   "Centro de negócios e salas de reuniões",
   "Discoteca",
+  "Santuário",
 ];
 
 /* ---------- Galeria ---------- */
 export const gallery: Photo[] = [
-  photo(aerea, "Vista aérea do resort junto ao rio"),
+  photo(aereaBangalosRio, "Vista aérea dos bangalôs ao longo do Rio Cuebe"),
+  photo(bangalosPorDoSol, "Bangalôs de palha ao pôr do sol"),
+  photo(piscinaPorDoSol, "Piscina e espreguiçadeiras ao entardecer"),
+  photo(rapidosCuebe, "Rápidos do Rio Cuebe vistos do ar"),
+  photo(lounge, "Lounge com poltronas de padrão zebra"),
+  photo(rececao, "Receção com balcão em pedra e sala de estar"),
+  photo(quartoDuplo, "Quarto com duas camas e candeeiros de cabeceira"),
+  photo(salaSuite, "Sala da suite com sofá de pele e vista para o jardim"),
+  photo(restauranteNoite, "Restaurante à noite, com mesas postas para o jantar"),
+  photo(esplanadaNoite, "Deck iluminado do restaurante à noite"),
+  photo(passadicoAcacias, "Passadiço iluminado entre acácias, junto ao rio"),
+  photo(bangaloNoite, "Bangalô iluminado ao anoitecer"),
+  photo(bangalosMargem, "Bangalôs alinhados na margem do rio"),
+  photo(aerea, "Vista aérea do restaurante e da piscina junto ao rio"),
   photo(bangalosEntardecer, "Bangalôs entre as árvores ao fim da tarde"),
   photo(passadicoRestaurante, "Passadiço de madeira ao longo do restaurante, junto ao rio"),
   photo(piscinaDeck, "Piscina junto à varanda, com espreguiçadeiras e guarda-sóis"),
   photo(suiteAmpla, "Suite ampla com cama de casal, sofá e mesa de jantar"),
   photo(safariBuggy, "Buggies a percorrer uma trilha na floresta"),
   photo(rioEntardecer, "O Rio Cuebe ao entardecer"),
-  photo(restauranteSalao, "Salão do restaurante sobre o rio"),
 ];

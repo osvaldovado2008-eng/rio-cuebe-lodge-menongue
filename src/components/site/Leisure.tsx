@@ -8,7 +8,7 @@ export function Leisure() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading eyebrow="Lazer" title="Descansar ao ritmo do rio" />
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {leisure.map((l) => (
             <article key={l.id}>
               <div className="overflow-hidden rounded-2xl">
