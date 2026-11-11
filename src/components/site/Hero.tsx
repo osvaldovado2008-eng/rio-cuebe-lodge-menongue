@@ -13,7 +13,7 @@ export function Hero() {
       />
       <div className="bg-hero-overlay absolute inset-0 -z-10" aria-hidden="true" />
 
-      <div className="mx-auto w-full max-w-7xl px-5 pb-10 pt-28 md:px-8 md:pb-16">
+      <div className="mx-auto w-full max-w-7xl px-5 pb-28 pt-28 md:px-8 md:pb-16">
         <div className="max-w-3xl animate-rise">
           <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-forest-foreground/25 bg-forest-foreground/10 px-3 py-1.5 text-gold backdrop-blur-sm">
             <MapPin className="h-3.5 w-3.5" /> {resort.location}
