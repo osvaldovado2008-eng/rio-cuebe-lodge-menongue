@@ -19,7 +19,7 @@ export function SocialLinks({ className }: { className?: string }) {
               target="_blank"
               rel="noreferrer"
               aria-label={`${s.label} do Rio Cuebe Lodge`}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-current/25 text-gold transition-colors hover:bg-gold hover:text-bark"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold transition-colors hover:bg-gold hover:text-bark"
             >
               <Icon className="h-5 w-5" />
             </a>
