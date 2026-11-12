@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Reveal } from "./Reveal";
 
 type Props = {
   eyebrow: string;
@@ -12,7 +13,7 @@ type Props = {
 export function SectionHeading({ eyebrow, title, text, tone = "dark", align = "left", className }: Props) {
   const onDark = tone === "light";
   return (
-    <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}>
+    <Reveal className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}>
       <span className={cn("eyebrow", onDark ? "text-gold" : "text-clay")}>{eyebrow}</span>
       <h2 className={cn("mt-3 text-4xl leading-[1.05] md:text-6xl", onDark ? "text-forest-foreground" : "text-bark")}>
         {title}
@@ -22,6 +23,6 @@ export function SectionHeading({ eyebrow, title, text, tone = "dark", align = "l
           {text}
         </p>
       )}
-    </div>
+    </Reveal>
   );
 }

@@ -5,10 +5,12 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger, SheetClose } from "@/com
 import { contact, navLinks } from "@/data/resort";
 import { SocialLinks } from "./SocialLinks";
 import { cn } from "@/lib/utils";
+import { useActiveSection } from "@/hooks/use-active-section";
 import { Logo } from "./Logo";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const active = useActiveSection(["inicio", ...navLinks.map((l) => l.href.slice(1))]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -32,9 +34,10 @@ export function SiteHeader() {
             <a
               key={l.href}
               href={l.href}
+              aria-current={active === l.href.slice(1) ? "true" : undefined}
               className={cn(
-                "text-sm font-medium transition-colors",
-                scrolled ? "text-bark hover:text-clay" : "text-forest-foreground/85 hover:text-gold",
+                "relative text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform aria-[current]:after:scale-x-100",
+                scrolled ? "text-bark hover:text-clay aria-[current]:text-clay" : "text-forest-foreground/85 hover:text-gold aria-[current]:text-gold",
               )}
             >
               {l.label}
@@ -70,7 +73,11 @@ export function SiteHeader() {
               <nav className="mt-6 flex flex-col px-5" aria-label="Menu móvel">
                 {navLinks.map((l) => (
                   <SheetClose asChild key={l.href}>
-                    <a href={l.href} className="border-b border-forest-foreground/10 py-4 font-display text-3xl hover:text-gold">
+                    <a
+                      href={l.href}
+                      aria-current={active === l.href.slice(1) ? "true" : undefined}
+                      className="border-b border-forest-foreground/10 py-4 font-display text-3xl hover:text-gold aria-[current]:text-gold"
+                    >
                       {l.label}
                     </a>
                   </SheetClose>

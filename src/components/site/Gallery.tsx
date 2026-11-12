@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { gallery } from "@/data/resort";
@@ -10,6 +10,18 @@ export function Gallery() {
   const current = index !== null ? gallery[index] : undefined;
   const open = current !== undefined;
   const go = (step: number) => setIndex((i) => (i === null ? i : (i + step + gallery.length) % gallery.length));
+  const touchX = useRef<number | null>(null);
+
+  // Arrow keys move between photos while the lightbox is open.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") go(1);
+      if (e.key === "ArrowLeft") go(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <section id="galeria" className="bg-background py-20 md:py-28">
@@ -37,11 +49,21 @@ export function Gallery() {
       <Dialog open={open} onOpenChange={(o) => !o && setIndex(null)}>
         <DialogContent className="max-w-5xl border-0 bg-transparent p-0 shadow-none [&>button]:hidden">
           {current && index !== null && (
-            <figure className="relative">
+            <figure
+              className="relative"
+              onTouchStart={(e) => (touchX.current = e.touches[0]?.clientX ?? null)}
+              onTouchEnd={(e) => {
+                if (touchX.current === null) return;
+                const dx = (e.changedTouches[0]?.clientX ?? touchX.current) - touchX.current;
+                if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+                touchX.current = null;
+              }}
+            >
               <DialogTitle className="sr-only">{current.alt}</DialogTitle>
-              <img src={current.src} alt={current.alt} className="max-h-[80vh] w-full rounded-xl object-contain" />
+              <img key={current.src} src={current.src} alt={current.alt} className="max-h-[75vh] w-full animate-in fade-in rounded-xl object-contain duration-300" />
               <figcaption className="mt-3 text-center text-sm text-forest-foreground">
                 {current.alt} · {index + 1}/{gallery.length}
+                <span className="mt-1 block text-xs text-forest-foreground/60 md:hidden">Deslize para ver mais</span>
               </figcaption>
               <div className="mt-3 flex justify-center gap-3">
                 <button onClick={() => go(-1)} aria-label="Anterior" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-background text-bark">

@@ -2,7 +2,7 @@
  * Single source of truth for all Rio Cuebe Lodge content.
  * Edit text, contacts, prices and photos here; the page components only render this data.
  */
-import aerea from "@/assets/resort/aerea-resort.jpg.asset.json";
+import aerea from "@/assets/resort/aerea-resort-hd.jpg.asset.json";
 import suiteRio from "@/assets/resort/suite-rio.jpg.asset.json";
 import bangaloJardim from "@/assets/resort/bangalo-jardim.jpg.asset.json";
 import suiteFamilia from "@/assets/resort/suite-familia-sala.jpg.asset.json";
@@ -69,16 +69,17 @@ export const contact = {
   whatsapp: { display: "+244 931 510 510", number: "244931510510" },
   email: "info@hoteisangola.com",
   hours: "Diariamente, das 8h às 22h",
-  address: "Estrada de Menongue – Caiundo, Km 11, Missombo, Menongue",
+  address: "Estrada de Menongue – Km 11, Missombo, Menongue",
   region: "Cuando Cubango, Angola",
   gps: { lat: -14.7708708, lng: 17.6886392, label: "-14,770871 / 17,688639" },
   plusCode: "5FQV6MHQ+MF",
   airportTransferNotice: "Transfer do aeroporto: avise com 72 h de antecedência",
 } as const;
 
-/** Redes sociais. Add the Instagram URL here when available; empty entries are hidden. */
+/** Redes sociais. Entries with an empty URL are hidden. */
 export const social: { id: "facebook" | "instagram"; label: string; url: string }[] = [
   { id: "facebook", label: "Facebook", url: "https://www.facebook.com/Riocuebelodge" },
+  { id: "instagram", label: "Instagram", url: "https://www.instagram.com/riocuebe" },
 ];
 
 export const mapEmbedUrl = `https://www.google.com/maps?q=${contact.gps.lat},${contact.gps.lng}&z=14&output=embed`;

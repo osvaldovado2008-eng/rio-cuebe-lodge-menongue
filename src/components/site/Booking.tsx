@@ -137,10 +137,10 @@ export function Booking() {
           )}
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Button type="submit" variant="forest" size="xl" className="flex-1">
+            <Button type="submit" variant="sand" size="lg" className="flex-1 rounded-full">
               <MessageCircle /> Enviar por WhatsApp
             </Button>
-            <Button type="button" variant="outline" size="xl" className="flex-1 rounded-full bg-card" onClick={() => send("email")}>
+            <Button type="button" variant="sand" size="lg" className="flex-1 rounded-full" onClick={() => send("email")}>
               <Mail /> Enviar por e-mail
             </Button>
           </div>

@@ -8,29 +8,30 @@ export function Hero() {
       <img
         src={resort.heroPhoto.src}
         alt={resort.heroPhoto.alt}
-        className="absolute inset-0 -z-10 h-full w-full animate-slow-zoom object-cover"
+        className="absolute inset-0 -z-10 h-full w-full animate-slow-zoom object-cover object-[60%_50%] md:object-center"
         fetchPriority="high"
+        decoding="async"
       />
       <div className="bg-hero-overlay absolute inset-0 -z-10" aria-hidden="true" />
 
-      <div className="mx-auto w-full max-w-7xl px-5 pb-28 pt-28 md:px-8 md:pb-16">
+      <div className="mx-auto w-full max-w-7xl px-5 pb-24 pt-24 md:px-8 md:pb-16 md:pt-28">
         <div className="max-w-3xl animate-rise">
           <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-forest-foreground/25 bg-forest-foreground/10 px-3 py-1.5 text-gold backdrop-blur-sm">
             <MapPin className="h-3.5 w-3.5" /> {resort.location}
           </span>
-          <h1 className="mt-5 text-5xl leading-[0.95] sm:text-6xl md:text-8xl">{resort.heroTitle}</h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-forest-foreground/85 md:text-lg">{resort.heroText}</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild variant="hero" size="xl">
+          <h1 className="mt-4 text-[2.6rem] leading-[0.95] sm:text-6xl md:mt-5 md:text-8xl">{resort.heroTitle}</h1>
+          <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed md:mt-5 md:text-base text-forest-foreground/85 md:text-lg">{resort.heroText}</p>
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:flex md:mt-8">
+            <Button asChild variant="hero" size="xl" className="px-3 text-sm sm:px-7 sm:text-base">
               <a href="#reservar">Pedir reserva</a>
             </Button>
-            <Button asChild variant="glass" size="xl">
-              <a href="#acomodacoes">Ver acomodações</a>
+            <Button asChild variant="glass" size="xl" className="px-3 text-sm sm:px-7 sm:text-base">
+              <a href="#acomodacoes">Acomodações</a>
             </Button>
           </div>
         </div>
 
-        <dl className="mt-12 grid grid-cols-3 gap-4 border-t border-forest-foreground/20 pt-6 md:mt-16 md:max-w-2xl">
+        <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-forest-foreground/20 pt-5 md:mt-16 md:pt-6 md:max-w-2xl">
           {stats.map((s) => (
             <div key={s.label}>
               <dt className="sr-only">{s.label}</dt>
