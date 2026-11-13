@@ -10,3 +10,4 @@
 - [ ] WhatsApp buttons green everywhere
 - [ ] Use YouTube video info (rooms, places) to enrich the site
 - [ ] Every "Reservar" button opens the booking form with that service pre-selected
+- [ ] Opening photo in motion (moving hero)

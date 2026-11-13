@@ -68,6 +68,8 @@
   --color-bark-foreground: var(--bark-foreground);
   --color-clay: var(--clay);
   --color-gold: var(--gold);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -83,6 +85,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-slow-zoom: slow-zoom 18s ease-out both;
+  --animate-ken-burns: ken-burns 9s ease-out both;
 }
 
 :root {
@@ -117,6 +120,9 @@
   --bark-foreground: oklch(0.93 0.03 80);
   --clay: oklch(0.55 0.11 52);
   --gold: oklch(0.88 0.06 85);
+  /* WhatsApp brand green, darkened slightly so white text stays readable */
+  --whatsapp: oklch(0.56 0.15 150);
+  --whatsapp-foreground: oklch(0.99 0.005 150);
 
   --gradient-hero: linear-gradient(
     180deg,
@@ -221,6 +227,15 @@
   }
   to {
     transform: scale(1);
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1.16) translate3d(var(--kb-x, 0%), var(--kb-y, 0%), 0);
+  }
+  to {
+    transform: scale(1.02) translate3d(0, 0, 0);
   }
 }
 

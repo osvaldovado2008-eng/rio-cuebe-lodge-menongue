@@ -21,6 +21,7 @@ const buttonVariants = cva(
         glass:
           "rounded-full border border-forest-foreground/40 bg-forest-foreground/10 text-forest-foreground backdrop-blur-sm hover:bg-forest-foreground/20",
         sand: "rounded-full bg-gold text-bark font-semibold hover:bg-gold/85",
+        whatsapp: "rounded-full bg-whatsapp text-whatsapp-foreground font-semibold shadow-soft hover:bg-whatsapp/90",
       },
       size: {
         default: "h-9 px-4 py-2",

@@ -29,7 +29,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-8">
         <Logo light={!scrolled} />
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Principal">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Principal">
           {navLinks.map((l) => (
             <a
               key={l.href}

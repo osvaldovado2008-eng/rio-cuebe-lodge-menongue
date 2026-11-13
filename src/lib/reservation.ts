@@ -1,16 +1,24 @@
-import { contact } from "@/data/resort";
+import { contact, type ServiceKind } from "@/data/resort";
 
 export type ReservationRequest = {
   name: string;
-  checkIn: string; // yyyy-mm-dd
-  checkOut: string; // yyyy-mm-dd
+  /** Name of the room, experience or service being requested. */
+  service: string;
+  kind: ServiceKind;
+  checkIn: string; // yyyy-mm-dd — the only date for activities, tables and events
+  checkOut: string; // yyyy-mm-dd — stays only
+  /** Preferred time (hh:mm), optional, for anything that is not a stay. */
+  time?: string;
   adults: number;
   children: number;
-  accommodation: string;
   notes?: string;
 };
 
 export const MAX_GUESTS = 10;
+/** Events and meetings can be much larger than a room booking. */
+export const MAX_EVENT_GUESTS = 500;
+
+export const isStay = (kind: ServiceKind) => kind === "stay";
 
 /** Number of nights between two yyyy-mm-dd dates (0 if invalid or not after check-in). */
 export function countNights(checkIn: string, checkOut: string): number {
@@ -24,12 +32,18 @@ export function countNights(checkIn: string, checkOut: string): number {
 /** Returns a Portuguese error message, or null when the request is valid. */
 export function validateReservation(r: ReservationRequest, today: string): string | null {
   if (!r.name.trim()) return "Indique o seu nome.";
-  if (!r.checkIn || !r.checkOut) return "Escolha as datas de entrada e saída.";
-  if (r.checkIn < today) return "A data de entrada não pode ser no passado.";
-  if (countNights(r.checkIn, r.checkOut) < 1) return "A saída tem de ser depois da entrada.";
+  if (!r.service) return "Escolha o que deseja reservar.";
+  const stay = isStay(r.kind);
+  if (stay) {
+    if (!r.checkIn || !r.checkOut) return "Escolha as datas de entrada e saída.";
+  } else if (!r.checkIn) {
+    return "Escolha a data.";
+  }
+  if (r.checkIn < today) return "A data não pode ser no passado.";
+  if (stay && countNights(r.checkIn, r.checkOut) < 1) return "A saída tem de ser depois da entrada.";
   if (r.adults < 1) return "Indique pelo menos 1 adulto.";
-  if (r.adults + r.children > MAX_GUESTS)
-    return `Para mais de ${MAX_GUESTS} pessoas, contacte-nos diretamente.`;
+  const max = r.kind === "event" ? MAX_EVENT_GUESTS : MAX_GUESTS;
+  if (r.adults + r.children > max) return `Para mais de ${max} pessoas, contacte-nos diretamente.`;
   return null;
 }
 
@@ -38,18 +52,25 @@ const formatDate = (iso: string) => {
   return `${d}/${m}/${y}`;
 };
 
+const people = (r: ReservationRequest, adultWord: [string, string]) =>
+  `${r.adults} ${r.adults === 1 ? adultWord[0] : adultWord[1]}${
+    r.children > 0 ? `, ${r.children} ${r.children === 1 ? "criança" : "crianças"}` : ""
+  }`;
+
 export function buildReservationMessage(r: ReservationRequest): string {
-  const nights = countNights(r.checkIn, r.checkOut);
-  const lines = [
-    "Olá, Rio Cuebe Lodge! Gostaria de pedir uma reserva:",
-    `• Nome: ${r.name.trim()}`,
-    `• Acomodação: ${r.accommodation}`,
-    `• Entrada: ${formatDate(r.checkIn)}`,
-    `• Saída: ${formatDate(r.checkOut)} (${nights} ${nights === 1 ? "noite" : "noites"})`,
-    `• Hóspedes: ${r.adults} ${r.adults === 1 ? "adulto" : "adultos"}${
-      r.children > 0 ? `, ${r.children} ${r.children === 1 ? "criança" : "crianças"}` : ""
-    }`,
-  ];
+  const lines = ["Olá, Rio Cuebe Lodge! Gostaria de pedir uma reserva:", `• Nome: ${r.name.trim()}`];
+  if (isStay(r.kind)) {
+    const nights = countNights(r.checkIn, r.checkOut);
+    lines.push(
+      `• Acomodação: ${r.service}`,
+      `• Entrada: ${formatDate(r.checkIn)}`,
+      `• Saída: ${formatDate(r.checkOut)} (${nights} ${nights === 1 ? "noite" : "noites"})`,
+      `• Hóspedes: ${people(r, ["adulto", "adultos"])}`,
+    );
+  } else {
+    lines.push(`• Serviço: ${r.service}`, `• Data: ${formatDate(r.checkIn)}${r.time ? ` às ${r.time}` : ""}`);
+    lines.push(`• Pessoas: ${people(r, ["adulto", "adultos"])}`);
+  }
   if (r.notes?.trim()) lines.push(`• Observações: ${r.notes.trim()}`);
   return lines.join("\n");
 }
@@ -68,9 +89,9 @@ export function formatKwanza(value: number): string {
   return `${new Intl.NumberFormat("pt-AO").format(value)} Kz`;
 }
 
-/** Lets an accommodation card preselect its option in the booking form. */
-export const SELECT_ACCOMMODATION_EVENT = "rio-cuebe:select-accommodation";
+/** Lets any "Reservar" button preselect its service (by id from bookableServices) in the booking form. */
+export const SELECT_SERVICE_EVENT = "rio-cuebe:select-service";
 
-export function selectAccommodation(id: string) {
-  window.dispatchEvent(new CustomEvent(SELECT_ACCOMMODATION_EVENT, { detail: id }));
+export function selectService(id: string) {
+  window.dispatchEvent(new CustomEvent(SELECT_SERVICE_EVENT, { detail: id }));
 }

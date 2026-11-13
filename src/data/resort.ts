@@ -9,14 +9,12 @@ import suiteFamilia from "@/assets/resort/suite-familia-sala.jpg.asset.json";
 import safariBuggy from "@/assets/resort/safari-buggy.jpg.asset.json";
 import passadicoPalmeiras from "@/assets/resort/passadico-palmeiras.jpg.asset.json";
 import rioEntardecer from "@/assets/resort/rio-entardecer.jpg.asset.json";
-import margemRio from "@/assets/resort/margem-rio.jpg.asset.json";
 import restauranteSalao from "@/assets/resort/restaurante-salao.jpg.asset.json";
 import pratoGrelhados from "@/assets/resort/prato-grelhados.jpg.asset.json";
 import sobremesaGelado from "@/assets/resort/sobremesa-gelado.jpg.asset.json";
 import sobremesaFlan from "@/assets/resort/sobremesa-flan.jpg.asset.json";
 import sobremesaRolo from "@/assets/resort/sobremesa-rolo-chocolate.jpg.asset.json";
 import piscinaPanoramica from "@/assets/resort/piscina-panoramica.jpg.asset.json";
-import mobiliarioCocos from "@/assets/resort/mobiliario-cocos.jpg.asset.json";
 import varandaVime from "@/assets/resort/varanda-vime.jpg.asset.json";
 import passadicoRestaurante from "@/assets/resort/passadico-restaurante.jpg.asset.json";
 import bangalosEntardecer from "@/assets/resort/bangalos-entardecer.jpg.asset.json";
@@ -35,6 +33,13 @@ import esplanadaNoite from "@/assets/resort/esplanada-noite.jpg.asset.json";
 import passadicoAcacias from "@/assets/resort/passadico-acacias.jpg.asset.json";
 import bangaloNoite from "@/assets/resort/bangalo-noite.jpg.asset.json";
 import bangalosMargem from "@/assets/resort/bangalos-margem.jpg.asset.json";
+import spaMargemRio from "@/assets/resort/spa-margem-rio.jpg.asset.json";
+import vidaSelvagem from "@/assets/resort/vida-selvagem-zebras.jpg.asset.json";
+import centroNegocios from "@/assets/resort/centro-negocios.jpg.asset.json";
+import salaReunioes from "@/assets/resort/sala-reunioes.jpg.asset.json";
+import salaConferencias from "@/assets/resort/sala-conferencias.jpg.asset.json";
+import discotecaFesta from "@/assets/resort/discoteca-festa.jpg.asset.json";
+import santuario from "@/assets/resort/santuario.jpg.asset.json";
 
 export type Photo = { src: string; alt: string };
 
@@ -53,6 +58,15 @@ export const resort = {
     "Suítes de palha sobre as margens do rio, gastronomia à beira-água e o silêncio de um lugar onde o tempo desacelera — na rota de safaris do sudoeste de Angola.",
   heroPhoto: photo(aerea, "Vista aérea do resort com a piscina, o restaurante de palha e o rio"),
 };
+
+/** Photos that cross-fade (with a slow zoom) in the opening screen. The first one loads first. */
+export const heroSlides: Photo[] = [
+  resort.heroPhoto,
+  photo(bangalosPorDoSol, "Bangalôs de palha ao pôr do sol"),
+  photo(aereaBangalosRio, "Vista aérea dos bangalôs ao longo do Rio Cuebe"),
+  photo(piscinaPorDoSol, "Piscina e espreguiçadeiras ao entardecer"),
+  photo(rapidosCuebe, "Rápidos do Rio Cuebe vistos do ar"),
+];
 
 export const stats = [
   { value: "37", label: "suítes junto ao rio" },
@@ -91,6 +105,7 @@ export const navLinks = [
   { href: "#experiencias", label: "Experiências" },
   { href: "#gastronomia", label: "Gastronomia" },
   { href: "#lazer", label: "Lazer" },
+  { href: "#eventos", label: "Eventos" },
   { href: "#galeria", label: "Galeria" },
   { href: "#contactos", label: "Contactos" },
 ];
@@ -114,7 +129,7 @@ export const accommodations: Accommodation[] = [
     id: "rio",
     name: "Bangalô Rio",
     description:
-      "Varanda sobre as margens, cama king e sala de estar com sofá. Acorde com o reflexo do rio.",
+      "Varanda sobre as margens, cama king e sala de estar com sofá de pele, poltronas e mesa de refeições. Acorde com o reflexo do rio.",
     highlights: ["Vista rio", "Cama king", "Varanda privada"],
     pricePerNight: null,
     photo: photo(suiteRio, "Suite com cama de casal, sofá de pele e teto de palha trançada"),
@@ -137,6 +152,18 @@ export const accommodations: Accommodation[] = [
     pricePerNight: null,
     photo: photo(suiteFamilia, "Sala de estar da suite com poltronas, mesa de jantar e tapete de zebra"),
   },
+];
+
+/** What every suite has inside (as shown in the resort's presentation video). */
+export const roomFeatures = [
+  "Sala de estar com sofá e poltronas",
+  "Mesa de refeições",
+  "Televisão",
+  "Roupeiro amplo",
+  "Minibar",
+  "Produtos de higiene",
+  "Varanda com cadeiras",
+  "Teto de palha trançada",
 ];
 
 export const amenities = [
@@ -162,16 +189,32 @@ export type Experience = {
 };
 
 export const experiencesIntro =
-  "Num território de mais de 900 hectares: passeios guiados, observação da vida selvagem, caminhadas e momentos à beira-água.";
+  "Num território de mais de 900 hectares: safaris com zebras e antílopes, massagens à beira-rio, caminhadas e momentos junto aos rápidos do Cuebe.";
 
 export const experiences: Experience[] = [
   {
     id: "safari",
-    name: "Safari em buggy",
+    name: "Safari na reserva",
+    description:
+      "Observe de perto zebras, gnus e antílopes que vivem em liberdade nos terrenos do resort, acompanhado por um guia.",
+    note: "Com guia · sob consulta",
+    photo: photo(vidaSelvagem, "Manada de zebras, gnus e antílopes entre as árvores"),
+  },
+  {
+    id: "buggy",
+    name: "Passeio em buggy",
     description:
       "Passeios guiados em veículo todo-o-terreno (UTV) pelas trilhas da floresta, com paragens para observar a paisagem.",
-    note: "Com guia · reserve na receção",
+    note: "Com guia · sob consulta",
     photo: photo(safariBuggy, "Buggy a percorrer uma trilha na floresta"),
+  },
+  {
+    id: "spa",
+    name: "Spa à beira-rio",
+    description:
+      "Massagens num deck de madeira sobre o rio, com chá e o som da água. Relaxamento a sério, no meio da natureza.",
+    note: "Marcação prévia",
+    photo: photo(spaMargemRio, "Massagem num deck de madeira com vista para o rio"),
   },
   {
     id: "caminhadas",
@@ -189,12 +232,12 @@ export const experiences: Experience[] = [
     photo: photo(rioEntardecer, "Rio calmo ao fim da tarde, com margens douradas"),
   },
   {
-    id: "banho",
-    name: "Banho nas margens",
+    id: "rapidos",
+    name: "Rápidos do Cuebe",
     description:
-      "Zonas de margem com rochas e sombra para refrescar e relaxar. Sujeito à época do ano.",
+      "Um miradouro de palha junto aos rápidos e zonas de margem com rochas e sombra para refrescar. Banho sujeito à época do ano.",
     note: "Incluído na estadia",
-    photo: photo(margemRio, "Margem do rio sob as árvores"),
+    photo: photo(rapidosCuebe, "Rápidos do Rio Cuebe vistos do ar"),
   },
 ];
 
@@ -232,10 +275,10 @@ export const leisure = [
     photo: photo(varandaVime, "Varanda coberta com poltronas de vime sobre o rio"),
   },
   {
-    id: "artesanal",
-    name: "Mobiliário artesanal",
-    description: "Mesas e bancos feitos à mão com cocos e texturas naturais.",
-    photo: photo(mobiliarioCocos, "Mesas e bancos artesanais feitos de cocos"),
+    id: "santuario",
+    name: "Santuário",
+    description: "Um pavilhão de palha ao ar livre com a imagem de Nossa Senhora — um lugar de silêncio e recolhimento.",
+    photo: photo(santuario, "Pavilhão de palha com a imagem de Nossa Senhora, ao entardecer"),
   },
   {
     id: "lounge",
@@ -246,12 +289,71 @@ export const leisure = [
 ];
 
 export const extraFacilities = [
-  "Spa e massagens",
   "Piscina e parque infantil",
-  "Centro de negócios e salas de reuniões",
-  "Discoteca",
-  "Santuário",
+  "Mobiliário artesanal feito de cocos",
+  "Bar no deck",
+  "Receção 24 horas",
 ];
+
+/* ---------- Eventos e negócios ---------- */
+export const events = {
+  title: "Reuniões, conferências e festas",
+  text: "Espaços para trabalhar e celebrar no meio da natureza: centro de negócios, sala de reuniões, sala de conferências e uma discoteca para grandes festas.",
+  spaces: [
+    {
+      id: "negocios",
+      name: "Centro de negócios",
+      description: "Escritório com computadores e zona de estar, para trabalhar durante a estadia.",
+      photo: photo(centroNegocios, "Entrada do centro de negócios, em edifício de palha"),
+    },
+    {
+      id: "reunioes",
+      name: "Sala de reuniões",
+      description: "Mesa de administração, cadeiras de pele, ecrã e vista para as árvores.",
+      photo: photo(salaReunioes, "Sala de reuniões com mesa comprida, cadeiras de pele e ecrã"),
+    },
+    {
+      id: "conferencias",
+      name: "Sala de conferências",
+      description: "Sala ampla com microfones nas mesas, para seminários e encontros de empresa.",
+      photo: photo(salaConferencias, "Sala de conferências com mesas em U e microfones"),
+    },
+    {
+      id: "festas",
+      name: "Discoteca e festas",
+      description: "Pista iluminada e salão para casamentos, aniversários e festas de empresa.",
+      photo: photo(discotecaFesta, "Festa na discoteca, com pista iluminada e muitos convidados"),
+    },
+  ],
+};
+
+/* ---------- Vídeo ---------- */
+export const video = {
+  youtubeId: "AktKzRcfaLg",
+  title: "Conheça o lodge em vídeo",
+  text: "Da entrada às suítes, do spa à vida selvagem: uma volta completa pelo Rio Cuebe Lodge.",
+  duration: "7 min",
+  poster: photo(aereaBangalosRio, "Vista aérea dos bangalôs ao longo do Rio Cuebe"),
+};
+
+/* ---------- Reservas ---------- */
+export type ServiceKind = "stay" | "activity" | "table" | "event";
+export type BookableService = { id: string; name: string; kind: ServiceKind };
+
+/** Everything the booking form can request. Each "Reservar" button preselects one of these by id. */
+export const bookableGroups: { label: string; services: BookableService[] }[] = [
+  { label: "Estadia", services: accommodations.map((a) => ({ id: a.id, name: a.name, kind: "stay" as const })) },
+  { label: "Experiências", services: experiences.map((e) => ({ id: e.id, name: e.name, kind: "activity" as const })) },
+  {
+    label: "Restaurante e eventos",
+    services: [
+      { id: "mesa", name: "Mesa no restaurante", kind: "table" },
+      { id: "evento", name: "Evento, reunião ou festa", kind: "event" },
+    ],
+  },
+];
+
+export const bookableServices: BookableService[] = bookableGroups.flatMap((g) => g.services);
 
 /* ---------- Galeria ---------- */
 export const gallery: Photo[] = [
@@ -273,6 +375,9 @@ export const gallery: Photo[] = [
   photo(passadicoRestaurante, "Passadiço de madeira ao longo do restaurante, junto ao rio"),
   photo(piscinaDeck, "Piscina junto à varanda, com espreguiçadeiras e guarda-sóis"),
   photo(suiteAmpla, "Suite ampla com cama de casal, sofá e mesa de jantar"),
+  photo(vidaSelvagem, "Zebras, gnus e antílopes nos terrenos do resort"),
+  photo(spaMargemRio, "Massagem no deck do spa, sobre o rio"),
+  photo(santuario, "Santuário de palha com a imagem de Nossa Senhora"),
   photo(safariBuggy, "Buggies a percorrer uma trilha na floresta"),
   photo(rioEntardecer, "O Rio Cuebe ao entardecer"),
 ];
