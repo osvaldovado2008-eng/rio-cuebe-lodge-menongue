@@ -79,7 +79,7 @@ export function Contact() {
             ))}
           </dl>
           <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
-            <Button asChild variant="sand" size="lg" className="rounded-full">
+            <Button asChild variant="whatsapp" size="lg" className="rounded-full">
               <a href={whatsappHref} target="_blank" rel="noreferrer">
                 <MessageCircle /> Falar no WhatsApp
               </a>

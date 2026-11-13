@@ -12,7 +12,7 @@ const DRIFT = [
   { "--kb-x": "3%", "--kb-y": "-1%" },
   { "--kb-x": "-2%", "--kb-y": "2%" },
   { "--kb-x": "2%", "--kb-y": "2%" },
-] as CSSProperties[];
+] as unknown as CSSProperties[];
 
 export function Hero() {
   const [index, setIndex] = useState(0);

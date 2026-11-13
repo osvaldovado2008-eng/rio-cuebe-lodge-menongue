@@ -73,7 +73,7 @@ export function Booking() {
     };
   }, []);
 
-  const service = bookableServices.find((s) => s.id === form.serviceId) ?? bookableServices[0];
+  const service = (bookableServices.find((s) => s.id === form.serviceId) ?? bookableServices[0])!;
   const stay = isStay(service.kind);
   const maxGuests = service.kind === "event" ? MAX_EVENT_GUESTS : MAX_GUESTS;
 

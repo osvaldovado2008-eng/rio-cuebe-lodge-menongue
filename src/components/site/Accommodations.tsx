@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { accommodations, accommodationsIntro, amenities } from "@/data/resort";
-import { formatKwanza, selectAccommodation } from "@/lib/reservation";
+import { formatKwanza, selectService } from "@/lib/reservation";
 import { SectionHeading } from "./SectionHeading";
 
 export function Accommodations() {
@@ -38,7 +38,7 @@ export function Accommodations() {
                   </p>
                 </div>
                 <Button asChild variant="forest" size="sm" className="h-10 px-4">
-                  <a href="#reservar" onClick={() => selectAccommodation(a.id)}>Reservar</a>
+                  <a href="#reservar" onClick={() => selectService(a.id)}>Reservar</a>
                 </Button>
               </div>
             </div>

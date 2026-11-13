@@ -34,7 +34,7 @@ export function MobileBookingBar() {
           href={`https://wa.me/${contact.whatsapp.number}`}
           target="_blank"
           rel="noreferrer"
-          className={cn(item, "bg-forest text-forest-foreground hover:bg-forest-deep")}
+          className={cn(item, "bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90")}
           tabIndex={hidden ? -1 : 0}
         >
           <MessageCircle /> <span className="truncate">WhatsApp</span>

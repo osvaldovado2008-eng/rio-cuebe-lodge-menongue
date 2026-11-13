@@ -8,7 +8,7 @@ export type ReservationRequest = {
   checkIn: string; // yyyy-mm-dd — the only date for activities, tables and events
   checkOut: string; // yyyy-mm-dd — stays only
   /** Preferred time (hh:mm), optional, for anything that is not a stay. */
-  time?: string;
+  time?: string | undefined;
   adults: number;
   children: number;
   notes?: string;
