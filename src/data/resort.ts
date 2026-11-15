@@ -34,10 +34,8 @@ import passadicoAcacias from "@/assets/resort/passadico-acacias.jpg.asset.json";
 import bangaloNoite from "@/assets/resort/bangalo-noite.jpg.asset.json";
 import bangalosMargem from "@/assets/resort/bangalos-margem.jpg.asset.json";
 import spaMargemRio from "@/assets/resort/spa-margem-rio.jpg.asset.json";
-import vidaSelvagem from "@/assets/resort/vida-selvagem-zebras.jpg.asset.json";
 import centroNegocios from "@/assets/resort/centro-negocios.jpg.asset.json";
 import salaReunioes from "@/assets/resort/sala-reunioes.jpg.asset.json";
-import salaConferencias from "@/assets/resort/sala-conferencias.jpg.asset.json";
 import discotecaFesta from "@/assets/resort/discoteca-festa.jpg.asset.json";
 import santuario from "@/assets/resort/santuario.jpg.asset.json";
 
@@ -55,7 +53,7 @@ export const resort = {
     "Resort de ecoturismo e lazer a 11 km de Menongue. Luxo rústico, natureza intocada e hospitalidade à beira do rio.",
   heroTitle: "Luxo rústico à beira do Rio Cuebe",
   heroText:
-    "Suítes de palha sobre as margens do rio, gastronomia à beira-água e o silêncio de um lugar onde o tempo desacelera — na rota de safaris do sudoeste de Angola.",
+    "Suítes de palha sobre as margens do rio, gastronomia à beira-água e o silêncio de um lugar onde o tempo desacelera — no coração de África.",
   heroPhoto: photo(aerea, "Vista aérea do resort com a piscina, o restaurante de palha e o rio"),
 };
 
@@ -76,12 +74,9 @@ export const stats = [
 
 /* ---------- Contactos ---------- */
 export const contact = {
-  phones: [
-    { display: "+244 931 510 510", href: "tel:+244931510510" },
-    { display: "+244 951 510 510", href: "tel:+244951510510" },
-  ],
-  whatsapp: { display: "+244 931 510 510", number: "244931510510" },
-  email: "info@hoteisangola.com",
+  phones: [{ display: "+244 926 664 427", href: "tel:+244926664427" }],
+  whatsapp: { display: "+244 926 664 427", number: "244926664427" },
+  email: "reservas.riocuebelodge@gmail.com",
   hours: "Diariamente, das 8h às 22h",
   address: "Estrada de Menongue – Km 11, Missombo, Menongue",
   region: "Cuando Cubango, Angola",
@@ -189,17 +184,9 @@ export type Experience = {
 };
 
 export const experiencesIntro =
-  "Num território de mais de 900 hectares: safaris com zebras e antílopes, massagens à beira-rio, caminhadas e momentos junto aos rápidos do Cuebe.";
+  "Num território de mais de 900 hectares: passeios de buggy pela floresta, massagens à beira-rio, caminhadas, pesca e momentos junto aos rápidos do Cuebe.";
 
 export const experiences: Experience[] = [
-  {
-    id: "safari",
-    name: "Safari na reserva",
-    description:
-      "Observe de perto zebras, gnus e antílopes que vivem em liberdade nos terrenos do resort, acompanhado por um guia.",
-    note: "Com guia · sob consulta",
-    photo: photo(vidaSelvagem, "Manada de zebras, gnus e antílopes entre as árvores"),
-  },
   {
     id: "buggy",
     name: "Passeio em buggy",
@@ -308,15 +295,9 @@ export const events = {
     },
     {
       id: "reunioes",
-      name: "Sala de reuniões",
-      description: "Mesa de administração, cadeiras de pele, ecrã e vista para as árvores.",
+      name: "Reuniões e conferências",
+      description: "Sala de administração com cadeiras de pele e ecrã, e sala ampla com microfones nas mesas para seminários e encontros de empresa.",
       photo: photo(salaReunioes, "Sala de reuniões com mesa comprida, cadeiras de pele e ecrã"),
-    },
-    {
-      id: "conferencias",
-      name: "Sala de conferências",
-      description: "Sala ampla com microfones nas mesas, para seminários e encontros de empresa.",
-      photo: photo(salaConferencias, "Sala de conferências com mesas em U e microfones"),
     },
     {
       id: "festas",
@@ -331,7 +312,7 @@ export const events = {
 export const video = {
   youtubeId: "AktKzRcfaLg",
   title: "Conheça o lodge em vídeo",
-  text: "Da entrada às suítes, do spa à vida selvagem: uma volta completa pelo Rio Cuebe Lodge.",
+  text: "Da entrada às suítes, do spa aos rápidos do rio: uma volta completa pelo Rio Cuebe Lodge.",
   duration: "7 min",
   poster: photo(aereaBangalosRio, "Vista aérea dos bangalôs ao longo do Rio Cuebe"),
 };
@@ -375,7 +356,6 @@ export const gallery: Photo[] = [
   photo(passadicoRestaurante, "Passadiço de madeira ao longo do restaurante, junto ao rio"),
   photo(piscinaDeck, "Piscina junto à varanda, com espreguiçadeiras e guarda-sóis"),
   photo(suiteAmpla, "Suite ampla com cama de casal, sofá e mesa de jantar"),
-  photo(vidaSelvagem, "Zebras, gnus e antílopes nos terrenos do resort"),
   photo(spaMargemRio, "Massagem no deck do spa, sobre o rio"),
   photo(santuario, "Santuário de palha com a imagem de Nossa Senhora"),
   photo(safariBuggy, "Buggies a percorrer uma trilha na floresta"),

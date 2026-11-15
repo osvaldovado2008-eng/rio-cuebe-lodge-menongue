@@ -117,7 +117,7 @@ export function Booking() {
           <SectionHeading
             eyebrow="Reservas"
             title="Reserve a sua estadia ou experiência"
-            text="Escolha o que deseja — suíte, safari, spa, mesa no restaurante ou evento — e envie o pedido por WhatsApp ou e-mail. A nossa equipa confirma a disponibilidade e o preço."
+            text="Escolha o que deseja — suíte, passeio de buggy, spa, mesa no restaurante ou evento — e envie o pedido por WhatsApp ou e-mail. A nossa equipa confirma a disponibilidade e o preço."
           />
           <ul className="mt-8 space-y-3 text-sm text-bark">
             <li>• Resposta {contact.hours.toLowerCase()}</li>

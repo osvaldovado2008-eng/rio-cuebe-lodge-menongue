@@ -7,7 +7,10 @@
 - [ ] Instagram photos — blocked: profile is private
 - [x] WhatsApp / e-mail buttons styled like "Como chegar"
 - [x] More interactivity (scroll reveal, active menu item, gallery swipe, copy address)
-- [ ] WhatsApp buttons green everywhere
-- [ ] Use YouTube video info (rooms, places) to enrich the site
-- [ ] Every "Reservar" button opens the booking form with that service pre-selected
-- [ ] Opening photo in motion (moving hero)
+- [x] WhatsApp buttons green everywhere
+- [x] Use YouTube video info (rooms, places) to enrich the site
+- [x] Every "Reservar" button opens the booking form with that service pre-selected
+- [x] Opening photo in motion (moving hero)
+- [x] Events section and video section
+- [x] Contacts from the Facebook screenshot (926 664 427, reservas.riocuebelodge@gmail.com)
+- [x] Remove zebra photos / safari (no animals at the resort)

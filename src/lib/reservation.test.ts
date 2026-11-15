@@ -12,7 +12,7 @@ const base: ReservationRequest = {
   children: 1,
 };
 
-const safari: ReservationRequest = { ...base, service: "Safari na reserva", kind: "activity", checkOut: "", time: "09:00" };
+const buggy: ReservationRequest = { ...base, service: "Passeio em buggy", kind: "activity", checkOut: "", time: "09:00" };
 
 describe("reservation request", () => {
   it("counts nights between check-in and check-out", () => {
@@ -26,7 +26,7 @@ describe("reservation request", () => {
 
   it("rejects dates in the past", () => {
     expect(validateReservation(base, "2026-12-21")).toMatch(/passado/);
-    expect(validateReservation(safari, "2026-12-21")).toMatch(/passado/);
+    expect(validateReservation(buggy, "2026-12-21")).toMatch(/passado/);
   });
 
   it("rejects more than 10 guests for a stay", () => {
@@ -43,10 +43,10 @@ describe("reservation request", () => {
   });
 
   it("an experience needs only one date, not a check-out", () => {
-    expect(validateReservation(safari, "2026-11-11")).toBeNull();
-    expect(validateReservation({ ...safari, checkIn: "" }, "2026-11-11")).toMatch(/Escolha a data/);
-    const msg = buildReservationMessage(safari);
-    expect(msg).toContain("Serviço: Safari na reserva");
+    expect(validateReservation(buggy, "2026-11-11")).toBeNull();
+    expect(validateReservation({ ...buggy, checkIn: "" }, "2026-11-11")).toMatch(/Escolha a data/);
+    const msg = buildReservationMessage(buggy);
+    expect(msg).toContain("Serviço: Passeio em buggy");
     expect(msg).toContain("Data: 20/12/2026 às 09:00");
     expect(msg).not.toContain("Saída");
   });

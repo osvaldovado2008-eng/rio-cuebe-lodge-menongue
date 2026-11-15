@@ -5,6 +5,8 @@ import { Accommodations } from "@/components/site/Accommodations";
 import { Experiences } from "@/components/site/Experiences";
 import { Dining } from "@/components/site/Dining";
 import { Leisure } from "@/components/site/Leisure";
+import { Events } from "@/components/site/Events";
+import { VideoTour } from "@/components/site/VideoTour";
 import { Gallery } from "@/components/site/Gallery";
 import { Booking } from "@/components/site/Booking";
 import { Contact } from "@/components/site/Contact";
@@ -12,7 +14,7 @@ import { MobileBookingBar } from "@/components/site/MobileBookingBar";
 
 const title = "Rio Cuebe Lodge — Resort de ecoturismo em Menongue, Angola";
 const description =
-  "37 suítes de palha à beira do Rio Cuebe, a 11 km de Menongue. Safaris, pesca, piscina e restaurante com vista para o rio. Peça já a sua reserva.";
+  "37 suítes de palha à beira do Rio Cuebe, a 11 km de Menongue. Passeios de buggy, spa, pesca, piscina e restaurante com vista para o rio. Peça já a sua reserva.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,6 +40,8 @@ function Index() {
         <Experiences />
         <Dining />
         <Leisure />
+        <Events />
+        <VideoTour />
         <Gallery />
         <Booking />
       </main>

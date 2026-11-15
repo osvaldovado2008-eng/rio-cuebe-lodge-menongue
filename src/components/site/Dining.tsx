@@ -1,4 +1,7 @@
+import { UtensilsCrossed } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { dining } from "@/data/resort";
+import { selectService } from "@/lib/reservation";
 import { SectionHeading } from "./SectionHeading";
 
 export function Dining() {
@@ -15,6 +18,11 @@ export function Dining() {
               </div>
             ))}
           </dl>
+          <Button asChild variant="forest" size="lg" className="mt-8 rounded-full">
+            <a href="#reservar" onClick={() => selectService("mesa")}>
+              <UtensilsCrossed /> Reservar mesa
+            </a>
+          </Button>
         </div>
 
         <div className="grid grid-cols-2 gap-3 md:gap-4">
