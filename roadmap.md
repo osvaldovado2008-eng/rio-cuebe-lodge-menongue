@@ -14,3 +14,5 @@
 - [x] Events section and video section
 - [x] Contacts from the Facebook screenshot (926 664 427, reservas.riocuebelodge@gmail.com)
 - [x] Remove zebra photos / safari (no animals at the resort)
+- [x] YouTube social button
+- [x] Sharper photos in the opening slideshow

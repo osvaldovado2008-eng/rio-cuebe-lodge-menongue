@@ -1,8 +1,8 @@
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import { social } from "@/data/resort";
 import { cn } from "@/lib/utils";
 
-const icons = { facebook: Facebook, instagram: Instagram };
+const icons = { facebook: Facebook, instagram: Instagram, youtube: Youtube };
 
 /** Round social buttons; only entries with a URL are shown. */
 export function SocialLinks({ className }: { className?: string }) {

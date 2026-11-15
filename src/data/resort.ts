@@ -20,10 +20,10 @@ import passadicoRestaurante from "@/assets/resort/passadico-restaurante.jpg.asse
 import bangalosEntardecer from "@/assets/resort/bangalos-entardecer.jpg.asset.json";
 import piscinaDeck from "@/assets/resort/piscina-deck.jpg.asset.json";
 import suiteAmpla from "@/assets/resort/suite-ampla.jpg.asset.json";
-import aereaBangalosRio from "@/assets/resort/aerea-bangalos-rio.jpg.asset.json";
-import bangalosPorDoSol from "@/assets/resort/bangalos-por-do-sol.jpg.asset.json";
-import piscinaPorDoSol from "@/assets/resort/piscina-por-do-sol.jpg.asset.json";
-import rapidosCuebe from "@/assets/resort/rapidos-cuebe.jpg.asset.json";
+import aereaBangalosRio from "@/assets/resort/aerea-bangalos-rio-hd.jpg.asset.json";
+import bangalosPorDoSol from "@/assets/resort/bangalos-por-do-sol-hd.jpg.asset.json";
+import piscinaPorDoSol from "@/assets/resort/piscina-por-do-sol-hd.jpg.asset.json";
+import rapidosCuebe from "@/assets/resort/rapidos-cuebe-hd.jpg.asset.json";
 import lounge from "@/assets/resort/lounge.jpg.asset.json";
 import rececao from "@/assets/resort/rececao.jpg.asset.json";
 import quartoDuplo from "@/assets/resort/quarto-duplo.jpg.asset.json";
@@ -86,9 +86,10 @@ export const contact = {
 } as const;
 
 /** Redes sociais. Entries with an empty URL are hidden. */
-export const social: { id: "facebook" | "instagram"; label: string; url: string }[] = [
+export const social: { id: "facebook" | "instagram" | "youtube"; label: string; url: string }[] = [
   { id: "facebook", label: "Facebook", url: "https://www.facebook.com/Riocuebelodge" },
   { id: "instagram", label: "Instagram", url: "https://www.instagram.com/riocuebe" },
+  { id: "youtube", label: "YouTube", url: "https://www.youtube.com/watch?v=AktKzRcfaLg" },
 ];
 
 export const mapEmbedUrl = `https://www.google.com/maps?q=${contact.gps.lat},${contact.gps.lng}&z=14&output=embed`;
