@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react";
 import path from "node:path";
 
 export default defineConfig({
-server: { allowedHosts: ['rio-cuebe-lodge-menongue.onrender.com'] },
   plugins: [react()],
   test: {
     environment: "jsdom",
