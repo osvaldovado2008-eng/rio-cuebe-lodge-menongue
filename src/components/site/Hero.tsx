@@ -16,6 +16,7 @@ const DRIFT = [
 
 export function Hero() {
   const [index, setIndex] = useState(0);
+  const [previous, setPrevious] = useState<number | null>(null);
   const [ready, setReady] = useState<Set<number>>(() => new Set());
   const [mounted, setMounted] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -32,7 +33,9 @@ export function Hero() {
       if (document.hidden) return;
       setIndex((current) => {
         const next = (current + 1) % heroSlides.length;
-        return ready.has(next) ? next : current;
+        if (!ready.has(next)) return current;
+        setPrevious(current);
+        return next;
       });
     }, SLIDE_MS);
     return () => window.clearInterval(timer);
@@ -40,7 +43,7 @@ export function Hero() {
 
   return (
     <section id="inicio" className="relative isolate flex items-end overflow-hidden bg-forest-deep text-forest-foreground md:min-h-[100svh]">
-      <div className="absolute inset-x-0 top-0 -z-10 h-[min(70svh,32rem)] overflow-hidden md:inset-0 md:h-full">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
         {heroSlides.map((slide, i) => {
           // Only the first photo is rendered on the server; the rest load after the page is interactive.
           if (i > 0 && !mounted) return null;
@@ -55,7 +58,7 @@ export function Hero() {
               className={cn(
                 "absolute inset-0 h-full w-full object-cover object-[60%_50%] transition-opacity duration-[1600ms] ease-in-out will-change-transform md:object-center",
                 active ? "opacity-100" : "opacity-0",
-                active && "animate-ken-burns",
+                (active || i === previous) && "animate-ken-burns",
               )}
               fetchPriority={i === 0 ? "high" : "low"}
               decoding="async"
@@ -72,7 +75,7 @@ export function Hero() {
           );
         })}
       </div>
-      <div className="bg-hero-overlay absolute inset-x-0 top-0 -z-10 h-[min(70svh,32rem)] md:inset-0 md:h-full" aria-hidden="true" />
+      <div className="bg-hero-overlay absolute inset-0 -z-10" aria-hidden="true" />
 
       <div className="mx-auto w-full max-w-7xl px-5 pb-24 pt-[35svh] md:px-8 md:pb-16 md:pt-28">
         <div className="max-w-3xl animate-rise">

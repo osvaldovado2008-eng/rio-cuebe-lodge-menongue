@@ -32,4 +32,4 @@ use the editor.
 ## Project rules
 - All site content (text, contacts, prices, photos) lives in `src/data/resort.ts`; components in `src/components/site/` only render it — keeps edits in one place.
 - Booking requests are composed client-side (`src/lib/reservation.ts`) and sent via WhatsApp/e-mail links — no backend is enabled yet.
-- Opening slideshow switches only to decoded photos; mobile uses a shorter image area and gentle zoom to avoid excessive enlargement of landscape originals.
+- Opening slideshow cross-fades only to decoded photos and covers the entire introductory text on every viewport; keep the zoom gentle and the outgoing photo animated to avoid jumps.
