@@ -57,7 +57,7 @@ export const resort = {
   heroPhoto: photo(aerea, "Vista aérea do resort com a piscina, o restaurante de palha e o rio"),
 };
 
-/** Opening photos switch directly once decoded, with a gentle zoom. The first one loads first. */
+/** Opening photos cross-fade once decoded, with a gentle zoom. The first one loads first. */
 export const heroSlides: Photo[] = [
   resort.heroPhoto,
   photo(bangalosPorDoSol, "Bangalôs de palha ao pôr do sol"),

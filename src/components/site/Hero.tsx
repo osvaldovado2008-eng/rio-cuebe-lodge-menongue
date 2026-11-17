@@ -53,7 +53,7 @@ export function Hero() {
               aria-hidden={!active}
               style={DRIFT[i % DRIFT.length]}
               className={cn(
-                "absolute inset-0 h-full w-full object-cover object-[60%_50%] will-change-transform md:object-center",
+                "absolute inset-0 h-full w-full object-cover object-[60%_50%] transition-opacity duration-[1600ms] ease-in-out will-change-transform md:object-center",
                 active ? "opacity-100" : "opacity-0",
                 active && "animate-ken-burns",
               )}
@@ -96,7 +96,7 @@ export function Hero() {
             <div key={s.label}>
               <dt className="sr-only">{s.label}</dt>
               <dd className="font-display text-3xl font-semibold leading-none md:text-5xl">{s.value}</dd>
-              <dd className="mt-2 text-[0.68rem] uppercase tracking-[0.16em] text-forest-foreground/75 md:text-xs">{s.label}</dd>
+              <dd className="mt-2 text-[0.62rem] uppercase tracking-[0.08em] text-forest-foreground/75 md:text-xs md:tracking-[0.16em]">{s.label}</dd>
             </div>
           ))}
         </dl>

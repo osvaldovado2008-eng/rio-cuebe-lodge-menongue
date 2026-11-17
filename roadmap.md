@@ -16,4 +16,5 @@
 - [x] Remove zebra photos / safari (no animals at the resort)
 - [x] YouTube social button
 - [x] Sharper photos in the opening slideshow
-- [x] Remove opening photo indicators and cross-fade; reduce mobile enlargement and zoom
+- [x] Remove opening photo dot indicators; keep the cross-fade, reduce mobile enlargement and zoom
+- [x] Fix sideways page scroll on narrow phones (booking form, amenities list, hero stats)

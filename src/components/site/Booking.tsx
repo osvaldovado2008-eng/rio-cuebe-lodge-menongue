@@ -113,7 +113,7 @@ export function Booking() {
   return (
     <section id="reservar" className="bg-sand-deep py-20 md:py-28">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 md:px-8 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
-        <div>
+        <div className="min-w-0">
           <SectionHeading
             eyebrow="Reservas"
             title="Reserve a sua estadia ou experiência"
@@ -126,7 +126,7 @@ export function Booking() {
           </ul>
         </div>
 
-        <form onSubmit={onSubmit} noValidate className="rounded-3xl bg-card p-5 shadow-lift md:p-8">
+        <form onSubmit={onSubmit} noValidate className="min-w-0 rounded-3xl bg-card p-5 shadow-lift md:p-8">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="sm:col-span-2">
               <Label htmlFor="r-service">O que deseja reservar?</Label>
@@ -136,7 +136,7 @@ export function Booking() {
                 value={service.id}
                 onChange={(e) => set("serviceId", e.target.value)}
                 className={cn(
-                  "mt-1.5 w-full border px-3 transition-shadow duration-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+                  "mt-1.5 w-full min-w-0 border px-3 transition-shadow duration-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
                   fieldClass,
                   flash && "ring-2 ring-clay ring-offset-2 ring-offset-card",
                 )}

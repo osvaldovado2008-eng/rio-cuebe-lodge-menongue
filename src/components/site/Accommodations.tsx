@@ -31,9 +31,9 @@ export function Accommodations() {
                 ))}
               </ul>
               <div className="mt-auto flex items-end justify-between gap-3 pt-6">
-                <div>
+                <div className="min-w-0">
                   <span className="eyebrow text-[0.62rem] text-muted-foreground">Por noite</span>
-                  <p className="font-display text-xl font-semibold text-clay">
+                  <p className="font-display text-base font-semibold text-clay md:text-xl">
                     {a.pricePerNight ? `desde ${formatKwanza(a.pricePerNight)}` : "Preço sob consulta"}
                   </p>
                 </div>
@@ -49,10 +49,11 @@ export function Accommodations() {
       <div className="mx-auto mt-12 max-w-7xl px-5 md:px-8">
         <div className="rounded-2xl border border-border bg-sand-deep p-6 md:p-8">
           <span className="eyebrow text-clay">Incluído em todas as estadias</span>
-          <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-3 lg:grid-cols-5">
+          <ul className="mt-5 grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {amenities.map((item) => (
-              <li key={item} className="flex items-center gap-2 text-sm text-bark">
-                <Check className="h-4 w-4 shrink-0 text-forest" /> {item}
+              <li key={item} className="flex min-w-0 items-center gap-2 text-sm text-bark">
+                <Check className="h-4 w-4 shrink-0 text-forest" />
+                <span className="min-w-0 flex-1">{item}</span>
               </li>
             ))}
           </ul>
