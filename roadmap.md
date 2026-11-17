@@ -16,3 +16,4 @@
 - [x] Remove zebra photos / safari (no animals at the resort)
 - [x] YouTube social button
 - [x] Sharper photos in the opening slideshow
+- [x] Remove opening photo indicators and cross-fade; reduce mobile enlargement and zoom

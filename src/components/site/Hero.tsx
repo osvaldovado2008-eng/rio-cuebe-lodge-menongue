@@ -8,25 +8,17 @@ const SLIDE_MS = 6500;
 /** Each photo drifts from a different corner so consecutive slides don't feel identical. */
 const DRIFT = [
   { "--kb-x": "0%", "--kb-y": "0%" },
-  { "--kb-x": "-3%", "--kb-y": "-2%" },
-  { "--kb-x": "3%", "--kb-y": "-1%" },
-  { "--kb-x": "-2%", "--kb-y": "2%" },
-  { "--kb-x": "2%", "--kb-y": "2%" },
+  { "--kb-x": "-0.5%", "--kb-y": "-0.5%" },
+  { "--kb-x": "0.5%", "--kb-y": "-0.5%" },
+  { "--kb-x": "-0.5%", "--kb-y": "0.5%" },
+  { "--kb-x": "0.5%", "--kb-y": "0.5%" },
 ] as unknown as CSSProperties[];
 
 export function Hero() {
   const [index, setIndex] = useState(0);
-  const [prev, setPrev] = useState<number | null>(null);
+  const [ready, setReady] = useState<Set<number>>(() => new Set());
   const [mounted, setMounted] = useState(false);
   const [paused, setPaused] = useState(false);
-
-  const goTo = (next: number) => {
-    setIndex((current) => {
-      if (next === current) return current;
-      setPrev(current);
-      return next;
-    });
-  };
 
   useEffect(() => {
     setMounted(true);
@@ -39,21 +31,20 @@ export function Hero() {
     const timer = window.setInterval(() => {
       if (document.hidden) return;
       setIndex((current) => {
-        setPrev(current);
-        return (current + 1) % heroSlides.length;
+        const next = (current + 1) % heroSlides.length;
+        return ready.has(next) ? next : current;
       });
     }, SLIDE_MS);
     return () => window.clearInterval(timer);
-  }, [mounted, paused, index]);
+  }, [mounted, paused, index, ready]);
 
   return (
-    <section id="inicio" className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-forest-deep text-forest-foreground">
-      <div className="absolute inset-0 -z-10">
+    <section id="inicio" className="relative isolate flex items-end overflow-hidden bg-forest-deep text-forest-foreground md:min-h-[100svh]">
+      <div className="absolute inset-x-0 top-0 -z-10 h-[min(70svh,32rem)] overflow-hidden md:inset-0 md:h-full">
         {heroSlides.map((slide, i) => {
           // Only the first photo is rendered on the server; the rest load after the page is interactive.
           if (i > 0 && !mounted) return null;
           const active = i === index;
-          const animating = active || i === prev;
           return (
             <img
               key={slide.src}
@@ -62,19 +53,28 @@ export function Hero() {
               aria-hidden={!active}
               style={DRIFT[i % DRIFT.length]}
               className={cn(
-                "absolute inset-0 h-full w-full object-cover object-[60%_50%] transition-opacity duration-[1600ms] ease-in-out will-change-transform md:object-center",
+                "absolute inset-0 h-full w-full object-cover object-[60%_50%] will-change-transform md:object-center",
                 active ? "opacity-100" : "opacity-0",
-                animating && "animate-ken-burns",
+                active && "animate-ken-burns",
               )}
               fetchPriority={i === 0 ? "high" : "low"}
               decoding="async"
+              onLoad={async (event) => {
+                const image = event.currentTarget;
+                try {
+                  await image.decode();
+                  setReady((current) => new Set(current).add(i));
+                } catch {
+                  // Keep the current photo visible if the next one cannot be decoded.
+                }
+              }}
             />
           );
         })}
       </div>
-      <div className="bg-hero-overlay absolute inset-0 -z-10" aria-hidden="true" />
+      <div className="bg-hero-overlay absolute inset-x-0 top-0 -z-10 h-[min(70svh,32rem)] md:inset-0 md:h-full" aria-hidden="true" />
 
-      <div className="mx-auto w-full max-w-7xl px-5 pb-24 pt-24 md:px-8 md:pb-16 md:pt-28">
+      <div className="mx-auto w-full max-w-7xl px-5 pb-24 pt-[35svh] md:px-8 md:pb-16 md:pt-28">
         <div className="max-w-3xl animate-rise">
           <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-forest-foreground/25 bg-forest-foreground/10 px-3 py-1.5 text-gold backdrop-blur-sm">
             <MapPin className="h-3.5 w-3.5" /> {resort.location}
@@ -100,27 +100,6 @@ export function Hero() {
             </div>
           ))}
         </dl>
-      </div>
-
-      {/* Slide indicators */}
-      <div className="absolute right-3 top-1/2 flex -translate-y-1/2 flex-col gap-2 md:right-8" role="group" aria-label="Fotografias">
-        {heroSlides.map((slide, i) => (
-          <button
-            key={slide.src}
-            type="button"
-            onClick={() => goTo(i)}
-            aria-label={`Ver foto ${i + 1}: ${slide.alt}`}
-            aria-current={i === index ? "true" : undefined}
-            className="flex h-7 w-7 items-center justify-center"
-          >
-            <span
-              className={cn(
-                "block w-1.5 rounded-full bg-forest-foreground/45 transition-all duration-500",
-                i === index ? "h-6 bg-gold" : "h-1.5 hover:bg-forest-foreground/80",
-              )}
-            />
-          </button>
-        ))}
       </div>
 
       <a href="#acomodacoes" aria-label="Descer" className="absolute bottom-4 right-5 hidden h-11 w-11 items-center justify-center rounded-full border border-forest-foreground/30 md:flex md:right-8">
