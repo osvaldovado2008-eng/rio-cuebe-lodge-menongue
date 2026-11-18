@@ -250,3 +250,16 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/*
+ * Hide the "Edit with Lovable" badge that the host injects on published
+ * deployments (an <aside id="lovable-badge"> in the page, plus its parts).
+ * The host's own styles use !important, so this needs !important too.
+ */
+#lovable-badge,
+[id^="lovable-badge"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

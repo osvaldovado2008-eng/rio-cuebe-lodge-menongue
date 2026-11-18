@@ -19,3 +19,4 @@
 - [x] Remove opening photo dot indicators; keep the cross-fade, reduce mobile enlargement and zoom
 - [x] Fix sideways page scroll on narrow phones (booking form, amenities list, hero stats)
 - [x] Moving, changing background behind the entire “Luxo rústico” introduction, without dot indicators
+- [x] Hide the "Edit with Lovable" badge with CSS
