@@ -2,6 +2,7 @@ import { UtensilsCrossed } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { dining } from "@/data/resort";
 import { selectService } from "@/lib/reservation";
+import { cn } from "@/lib/utils";
 import { SectionHeading } from "./SectionHeading";
 
 export function Dining() {
@@ -25,10 +26,19 @@ export function Dining() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 md:gap-4">
-          <img src={dining.hero.src} alt={dining.hero.alt} loading="lazy" className="col-span-2 aspect-[16/9] w-full rounded-2xl object-cover shadow-soft" />
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:gap-4">
+          <img src={dining.hero.src} alt={dining.hero.alt} loading="lazy" className="col-span-full aspect-[16/9] w-full rounded-2xl object-cover shadow-soft" />
           {dining.dishes.map((d) => (
-            <img key={d.src} src={d.src} alt={d.alt} loading="lazy" className="aspect-square w-full rounded-2xl object-cover" />
+            <img
+              key={d.src}
+              src={d.src}
+              alt={d.alt}
+              loading="lazy"
+              className={cn(
+                "w-full rounded-2xl object-cover shadow-soft",
+                d.tall ? "row-span-2 h-full" : "aspect-square",
+              )}
+            />
           ))}
         </div>
       </div>

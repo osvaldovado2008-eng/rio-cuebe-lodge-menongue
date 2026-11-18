@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { accommodations, accommodationsIntro, amenities } from "@/data/resort";
+import { accommodations, accommodationsIntro, amenities, roomFeatures, roomInterior } from "@/data/resort";
 import { formatKwanza, selectService } from "@/lib/reservation";
 import { SectionHeading } from "./SectionHeading";
 
@@ -44,6 +44,38 @@ export function Accommodations() {
             </div>
           </article>
         ))}
+      </div>
+
+      <div className="mx-auto mt-16 max-w-7xl px-5 md:px-8">
+        <div className="grid gap-8 lg:grid-cols-[1fr_2fr] lg:items-start lg:gap-12">
+          <div className="min-w-0">
+            <span className="eyebrow text-clay">Por dentro das suítes</span>
+            <h3 className="mt-3 text-3xl text-bark md:text-4xl">Tudo o que encontra no quarto</h3>
+            <ul className="mt-5 grid grid-cols-1 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-1">
+              {roomFeatures.map((f) => (
+                <li key={f} className="flex min-w-0 items-center gap-2 text-sm text-bark">
+                  <Check className="h-4 w-4 shrink-0 text-forest" />
+                  <span className="min-w-0 flex-1">{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="grid min-w-0 grid-cols-2 gap-3 md:gap-4">
+            {roomInterior.map((r) => (
+              <figure key={r.photo.src} className="group relative overflow-hidden rounded-2xl shadow-soft">
+                <img
+                  src={r.photo.src}
+                  alt={r.photo.alt}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-deep/80 to-transparent px-3 pb-2.5 pt-8 text-xs font-medium tracking-wide text-sand md:text-sm">
+                  {r.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="mx-auto mt-12 max-w-7xl px-5 md:px-8">

@@ -10,7 +10,10 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
- server: { allowedHosts: ["rio-cuebe-lodge-menongue-1.onrender.com"] },
+  // Extra Vite options go under `vite`; this lets the Render host serve the app.
+  vite: {
+    server: { allowedHosts: ["rio-cuebe-lodge-menongue-1.onrender.com"] },
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

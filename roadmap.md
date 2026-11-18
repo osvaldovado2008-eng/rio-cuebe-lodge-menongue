@@ -20,3 +20,4 @@
 - [x] Fix sideways page scroll on narrow phones (booking form, amenities list, hero stats)
 - [x] Moving, changing background behind the entire “Luxo rústico” introduction, without dot indicators
 - [x] Hide the "Edit with Lovable" badge with CSS
+- [x] Add real Google Maps room photos (Acomodações) and dish photos (Gastronomia), sharpened without changing content

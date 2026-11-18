@@ -10,7 +10,6 @@ import safariBuggy from "@/assets/resort/safari-buggy.jpg.asset.json";
 import passadicoPalmeiras from "@/assets/resort/passadico-palmeiras.jpg.asset.json";
 import rioEntardecer from "@/assets/resort/rio-entardecer.jpg.asset.json";
 import restauranteSalao from "@/assets/resort/restaurante-salao.jpg.asset.json";
-import pratoGrelhados from "@/assets/resort/prato-grelhados.jpg.asset.json";
 import sobremesaGelado from "@/assets/resort/sobremesa-gelado.jpg.asset.json";
 import sobremesaFlan from "@/assets/resort/sobremesa-flan.jpg.asset.json";
 import sobremesaRolo from "@/assets/resort/sobremesa-rolo-chocolate.jpg.asset.json";
@@ -38,6 +37,14 @@ import centroNegocios from "@/assets/resort/centro-negocios.jpg.asset.json";
 import salaReunioes from "@/assets/resort/sala-reunioes.jpg.asset.json";
 import discotecaFesta from "@/assets/resort/discoteca-festa.jpg.asset.json";
 import santuario from "@/assets/resort/santuario.jpg.asset.json";
+import quartoGoogle from "@/assets/resort/quarto-google.jpg.asset.json";
+import salaQuarto from "@/assets/resort/sala-quarto.jpg.asset.json";
+import mesaJanela from "@/assets/resort/mesa-janela.jpg.asset.json";
+import casaBanho from "@/assets/resort/casa-banho.jpg.asset.json";
+import pratoPeixe from "@/assets/resort/prato-peixe.jpg.asset.json";
+import pratoCarneDeck from "@/assets/resort/prato-carne-deck.jpg.asset.json";
+import pratoBifeOvo from "@/assets/resort/prato-bife-ovo.jpg.asset.json";
+import cervejaRio from "@/assets/resort/cerveja-rio.jpg.asset.json";
 
 export type Photo = { src: string; alt: string };
 
@@ -162,6 +169,14 @@ export const roomFeatures = [
   "Teto de palha trançada",
 ];
 
+/** Real guest photos of the suites' interior (from the lodge's Google Maps "Quartos" album). */
+export const roomInterior: { caption: string; photo: Photo }[] = [
+  { caption: "Quarto", photo: photo(quartoGoogle, "Quarto com cama de casal, cabeceira de pele, roupeiro branco e sofá") },
+  { caption: "Sala de estar", photo: photo(salaQuarto, "Sala da suite com televisão, mesa de vidro e janelas para o jardim") },
+  { caption: "Mesa junto à janela", photo: photo(mesaJanela, "Mesa de vidro com duas cadeiras entre janelas com vista para as palhotas") },
+  { caption: "Casa de banho", photo: photo(casaBanho, "Casa de banho com cabine de duche e toalhas") },
+];
+
 export const amenities = [
   "Wi-Fi gratuito",
   "Estacionamento gratuito",
@@ -234,18 +249,22 @@ export const dining = {
   title: "Sabores do resort, com vista para o rio",
   text: "Um salão panorâmico com teto de palha trançada e esplanada virada para a água. Cozinha angolana e internacional, grelhados da casa e bebidas bem geladas num ambiente rústico, rodeado de natureza.",
   highlights: [
-    { title: "Cozinha angolana e internacional", text: "Pratos tradicionais e grelhados da casa." },
+    { title: "Cozinha angolana e internacional", text: "Peixe grelhado, bife com ovo e grelhados da casa." },
     { title: "Pequeno-almoço buffet", text: "Incluído, com saladas frescas e acompanhamentos." },
     { title: "Bar no deck", text: "Bebidas geladas junto ao rio." },
     { title: "Sobremesas artesanais", text: "Rolo de chocolate, flan e gelado." },
   ],
   hero: photo(restauranteSalao, "Salão do restaurante com mesas postas e janelas sobre o rio"),
+  /** `tall` photos take two rows in the dish grid. */
   dishes: [
-    photo(pratoGrelhados, "Prato de grelhados com batata frita e salada"),
+    photo(pratoPeixe, "Posta de peixe grelhado com legumes salteados, tomate e limão"),
+    { ...photo(pratoCarneDeck, "Carne grelhada com cebolada, batata frita e salada, servida no deck"), tall: true },
+    photo(pratoBifeOvo, "Bife com ovo estrelado, batata frita e azeitonas"),
+    photo(cervejaRio, "Cerveja gelada no deck, com o Rio Cuebe ao fundo"),
     photo(sobremesaFlan, "Flan com calda de caramelo e natas"),
     photo(sobremesaRolo, "Rolo de chocolate com chantilly"),
     photo(sobremesaGelado, "Sobremesa de gelado servido em cesto de bolacha"),
-  ],
+  ] as (Photo & { tall?: boolean })[],
 };
 
 /* ---------- Lazer ---------- */
@@ -357,6 +376,8 @@ export const gallery: Photo[] = [
   photo(passadicoRestaurante, "Passadiço de madeira ao longo do restaurante, junto ao rio"),
   photo(piscinaDeck, "Piscina junto à varanda, com espreguiçadeiras e guarda-sóis"),
   photo(suiteAmpla, "Suite ampla com cama de casal, sofá e mesa de jantar"),
+  photo(quartoGoogle, "Quarto com cama de casal e roupeiro branco"),
+  photo(pratoCarneDeck, "Carne grelhada servida no deck do restaurante"),
   photo(spaMargemRio, "Massagem no deck do spa, sobre o rio"),
   photo(santuario, "Santuário de palha com a imagem de Nossa Senhora"),
   photo(safariBuggy, "Buggies a percorrer uma trilha na floresta"),
